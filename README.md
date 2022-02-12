@@ -23,29 +23,49 @@ This repo contains the code for our work **Neural Style Transfer: A Technical Re
 
 - Clone the repo:
 
-```.bash
-git clone https://github.com/praeclarumjj3/NST-Tech.git
-cd NST-Tech
-```
+    ```.bash
+    git clone https://github.com/praeclarumjj3/NST-Tech.git
+    cd NST-Tech
+    ```
 
 - Create a conda environment:
 
-```.bash
-conda env create -f conda_env.yml
-conda activate nst
-```
+    ```.bash
+    conda env create -f conda_env.yml
+    conda activate nst
+    ```
 
 ## 3. Experiments
 
+### Training
+
 - Execute the following command to run style transfer:
 
-```bash
-sh nst.sh
-```
+    ```bash
+    sh nst.sh
+    ```
 
 >Note: There are arguments specified in the `nst.sh` script. Please modify them to run experiments under different settings.
 
 - You may specify the `content` and `style` images to be used from the [data/content](data/content) and [data/style](data/style) folders respectively.
+
+### Evaluation
+
+- We use the predictions from the [AdaIn-Style](https://github.com/xunhuang1995/AdaIN-style) method proposed in [Arbitrary Style Transfer in Real-time with Adaptive Instance Normalization](https://arxiv.org/abs/1703.06868) as ground truths while evaluating the performance of our method.
+
+- Install [`image-similarity-measures`](https://github.com/up42/image-similarity-measures):
+
+    ```.bash
+    pip install image-similarity-measures[speedups]
+    ```
+
+- Execute the following command to calculate the `PSNR`, `SSIM` and `RMSE` scores:
+
+    ```.bash
+    sh metrics.sh [path-to-gt] [path-to-our-prediction]
+    ```
+
+>Note: The gts can be found in the [`data/gts/`](data/gts/) directory. You may specify more metrics in the [metrics.sh](metrics.sh) script.
 
 ## Acknowledgement
 
