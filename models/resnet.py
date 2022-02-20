@@ -2,7 +2,7 @@ from collections import namedtuple
 import torch
 from torchvision import models
 from torchsummary import summary
-from icecream import ic
+# from icecream import ic
 
 
 class ResNet18(torch.nn.Module):
