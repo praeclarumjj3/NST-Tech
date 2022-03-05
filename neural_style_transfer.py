@@ -56,6 +56,7 @@ def neural_style_transfer(config):
     os.makedirs(dump_path, exist_ok=True)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    lr = config['lr']
 
     content_img = utils.prepare_img(content_img_path, config['height'], device)
     style_img = utils.prepare_img(style_img_path, config['height'], device)
@@ -113,9 +114,9 @@ def neural_style_transfer(config):
         optimizer.step(closure)
     else:
         if config['optimizer'] == 'adam':
-            optimizer = Adam((optimizing_img,), lr=1e1)
+            optimizer = Adam((optimizing_img,), lr=lr)
         elif config['optimizer'] == 'adamw':
-            optimizer = AdamW((optimizing_img,), lr=1e1, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01, amsgrad=False)
+            optimizer = AdamW((optimizing_img,), lr=lr, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01, amsgrad=False)
         
         tuning_step = make_tuning_step(neural_net, optimizer, target_representations, content_feature_maps_index_name[0], style_feature_maps_indices_names[0], config)
         for cnt in range(num_of_iterations):
@@ -123,7 +124,7 @@ def neural_style_transfer(config):
             with torch.no_grad():
                 if cnt % 2 == 0:
                     print(f'{config["optimizer"]} | iteration: {cnt:03}, total loss={total_loss.item():12.4f}, content_loss={config["content_weight"] * content_loss.item():12.4f}, style loss={config["style_weight"] * style_loss.item():12.4f}, tv loss={config["tv_weight"] * tv_loss.item():12.4f}')
-                    utils.save_and_maybe_display(optimizing_img, dump_path, config, cnt, num_of_iterations, should_display=False)
+                    utils.save_and_display(optimizing_img, dump_path, config, cnt, num_of_iterations, should_display=False)
 
     return dump_path
 
