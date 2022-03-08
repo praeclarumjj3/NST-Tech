@@ -7,6 +7,6 @@ python neural_style_transfer.py --content_img_name green_bridge.jpg \
         --tv_weight 0 \
         --optimizer lbfgs \
         --init_method content \
-        --steps 1000 \
+        --steps 1001 \
         --model vgg19
         
