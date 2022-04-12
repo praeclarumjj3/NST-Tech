@@ -5,7 +5,7 @@
 
 [Jitesh Jain](https://praeclarumjj3.github.io/)<sup>&dagger;</sup>, [Divyansh Agarwal](https://github.com/div794)<sup>&dagger;</sup>, [Gagan Sharma](https://gagansh7171.github.io/#/)<sup>&dagger;</sup>, [R Chinmay](https://github.com/rchinmay)<sup>&dagger;</sup>, [Md Junaid Mahmood](https://github.com/MdJunaidMahmood)<sup>&dagger;</sup>
 
-[[`proposal`](data/proposal.pdf)] [[`mid-term report`](data/mid_report.pdf)]
+[[`proposal`](data/proposal.pdf)] [[`mid-term report`](data/mid_report.pdf)] [[`final report`](data/final_report.pdf)]
 
 ## Contents
 
